@@ -1,0 +1,23 @@
+<div class="form-container">
+  <form #noteForm="ngForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input clearInput [(ngModel)]="note.title" required name="title"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label position="floating">Body</ion-label>
+      <ion-textarea [(ngModel)]="note.body" name="body" required></ion-textarea>
+    </ion-item>
+    <div style="margin-top: 2em;">
+      <ion-button color="danger" (click)="onCancel()">
+        <ion-icon slot="start" name="close-outline"></ion-icon>
+        Cancel
+      </ion-button>
+      <ion-button color="success" [disabled]="!noteForm.valid" type="submit" style="float:right">
+        <ion-icon slot="start" name="save-outline"></ion-icon>
+        Save
+      </ion-button>
+    </div>
+  </form>
+</div>

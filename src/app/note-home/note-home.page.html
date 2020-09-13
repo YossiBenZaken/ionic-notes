@@ -1,0 +1,22 @@
+<ion-searchbar
+  #filterInput
+  (ionInput)="filter($event.target.value)"
+  animated
+  placeholder="Filter Notes"
+></ion-searchbar>
+
+<div class="notes-list" [@listAnim]>
+  <app-note-card
+    *ngFor="let card of filteredNotes"
+    [@itemAnim]
+    (delete)="deleteNote(card)"
+    [title]="card.title"
+    [body]="card.body"
+    [link]="generateNoteURL(card)"
+  ></app-note-card>
+</div>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button routerLink="new">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
